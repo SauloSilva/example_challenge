@@ -1,0 +1,14 @@
+{
+  "name": "account_create",
+  "type": "record",
+  "fields": [
+    {
+      "name": "available_limit",
+      "type": "int"
+    },
+    {
+      "name": "active_card",
+      "type": "boolean"
+    }
+  ]
+}
