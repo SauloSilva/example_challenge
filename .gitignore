@@ -10,11 +10,21 @@
 # Ignore all logfiles and tempfiles.
 /core/log/*
 /core/tmp/*
+
+/accounts/log/*
+/accounts/tmp/*
+
+/transactions/log/*
+/transactions/tmp/*
+
 !/log/.keep
 !/tmp/.keep
 
 # Ignore uploaded files in development.
 /core/storage/*
+/accounts/storage/*
+/transactions/storage/*
+
 !/storage/.keep
 .byebug_history
 
@@ -25,5 +35,11 @@
 
 /core/coverage/*
 /core/.rspec*
+
+/accounts/coverage/*
+/accounts/.rspec*
+
+/transactions/coverage/*
+/transactions/.rspec*
 
 .tool-versions
