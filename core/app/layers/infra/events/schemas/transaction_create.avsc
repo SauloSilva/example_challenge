@@ -1,0 +1,31 @@
+{
+  "name": "transaction_create",
+  "type": "record",
+  "fields": [
+    {
+      "name": "account",
+      "type": "account_create"
+    },
+    {
+      "name": "account_id",
+      "type": "int"
+    },
+    {
+      "name": "merchant",
+      "type": "string"
+    },
+    {
+      "name": "amount",
+      "type": "int"
+    },
+    {
+      "name": "time",
+      "type": [
+        "null", {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      ]
+    }
+  ]
+}
