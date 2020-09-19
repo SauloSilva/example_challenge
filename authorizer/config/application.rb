@@ -11,11 +11,11 @@ require "active_job/railtie" # Only for Rails >= 4.2
 require "action_cable/engine" # Only for Rails >= 5.0
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
-require 'core'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+require 'core'
 
 module Api
   class Application < Rails::Application

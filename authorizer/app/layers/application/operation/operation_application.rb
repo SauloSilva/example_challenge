@@ -8,7 +8,7 @@ module Application
       end
 
       def application
-        Application::Operation::Commands::CreateOperationCommand.new(params).application
+        @application ||= Application::Operation::Commands::CreateOperationCommand.new(params).application
       end
     end
   end

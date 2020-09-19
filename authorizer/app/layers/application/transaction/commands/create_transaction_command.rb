@@ -20,6 +20,7 @@ module Application
         end
 
         def response
+          valid?
           Infra::Api::Serializers::TransactionSerializer.new(transaction_repository).serialized_json
         end
 
