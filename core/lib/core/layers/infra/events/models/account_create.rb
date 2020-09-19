@@ -1,3 +1,5 @@
+require File.join(Core.root, 'lib', 'core', 'layers', 'infra', 'events', 'models', 'base')
+
 module Infra
   module Events
     module Models

@@ -8,9 +8,6 @@ Dotenv.load
 require 'karafka'
 require 'dry-struct'
 require 'types'
-
-Dir["../core/app/layers/**/*.rb"].each { |file| require file }
-
 require 'core/version'
 require 'nulldb/rails'
 
@@ -20,8 +17,9 @@ module Core
   end
 
   def self.schemas_path
-    File.join(root, 'app', 'layers', 'infra', 'events', 'schemas')
+    File.join(root, 'lib', 'core', 'layers', 'infra', 'events', 'schemas')
   end
 end
 
+Dir[File.join(Core.root, 'lib', 'core', '**', '*.rb')].each { |file| p file; require file }
 ActiveRecord::Base.establish_connection(adapter: :nulldb, schema: File.join(Core.root, 'db', 'schema.rb'))

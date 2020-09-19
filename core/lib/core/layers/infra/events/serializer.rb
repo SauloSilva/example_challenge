@@ -1,4 +1,4 @@
-require 'infra/events/adapters/avro_client'
+require File.join(Core.root, 'lib', 'core', 'layers', 'infra', 'events', 'adapters', 'avro_client')
 
 module Infra
   module Events
