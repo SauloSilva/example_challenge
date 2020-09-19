@@ -17,6 +17,9 @@
 /transactions/log/*
 /transactions/tmp/*
 
+/authorizer/log/*
+/authorizer/tmp/*
+
 !/log/.keep
 !/tmp/.keep
 
@@ -24,6 +27,7 @@
 /core/storage/*
 /accounts/storage/*
 /transactions/storage/*
+/authorizer/storage/*
 
 !/storage/.keep
 .byebug_history
@@ -41,5 +45,8 @@
 
 /transactions/coverage/*
 /transactions/.rspec*
+
+/authorizer/coverage/*
+/authorizer/.rspec*
 
 .tool-versions
