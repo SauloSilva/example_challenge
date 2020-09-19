@@ -2,17 +2,17 @@ module Web
   module Controllers
     class OperationsController < ::ActionController::API
       def create
-        operation_application = Application::Operation::OperationApplication.new(operation_param)
+        operation_application = Application::Operation::OperationApplication.new(operation_param).application
 
         if operation_application.valid?
           operation_application.dispatch_event
           operation_application.save
 
-          render json: operation_application.response, status: :ok
+          render status: :created, json: operation_application.response
         else
           render status: :unprocessable_entity, json: operation_application.response
         end
-      rescue RuntimeError => e
+      rescue => e
         render status: :unprocessable_entity, json: { message: e.message }
       end
 
