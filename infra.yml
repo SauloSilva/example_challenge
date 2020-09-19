@@ -1,6 +1,39 @@
 ---
-version: '3.4'
+version: '3.8'
+
+x-default: &default
+  working_dir: /app
+  env_file:
+    - .env
+  tty: true
+  stdin_open: true
+
 services:
+  accounts:
+    <<: *default
+    build:
+      context: .
+      dockerfile: ./accounts/Dockerfile
+    volumes:
+      - gems:/usr/local/bundle
+
+  transactions:
+    <<: *default
+    build:
+      context: .
+      dockerfile: ./transactions/Dockerfile
+    volumes:
+      - gems:/usr/local/bundle
+
+  authorizer:
+    build:
+      context: .
+      dockerfile: ./authorizer/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - gems:/usr/local/bundle
+
   zookeeper:
     image: confluentinc/cp-zookeeper:5.4.0
     hostname: zookeeper
@@ -64,3 +97,4 @@ services:
 volumes:
   db_data:
   zookeeper-data:
+  gems:
