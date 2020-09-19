@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'core', path: '/app/vendor/gems/core'
+gem 'core', path: './vendor/gems/core'
 
 group :test do
   gem 'rspec', '3.9.0'
