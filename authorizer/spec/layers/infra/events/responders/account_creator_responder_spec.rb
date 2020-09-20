@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Infra::Events::Responders::AccountCreatorResponder, type: :responder do
   subject(:responder) { described_class.new }
 
+  it { expect(described_class).to be < Karafka::BaseResponder }
+
   describe '#topics' do
     context 'account_create' do
       subject(:topic) { described_class.topics['account_create'] }

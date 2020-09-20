@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Infra::Events::Responders::TransactionCreatorResponder, type: :responder do
   subject(:responder) { described_class.new }
 
+  it { expect(described_class).to be < Karafka::BaseResponder }
+
   describe '#topics' do
     context 'transaction_create' do
       subject(:topic) { described_class.topics['transaction_create'] }

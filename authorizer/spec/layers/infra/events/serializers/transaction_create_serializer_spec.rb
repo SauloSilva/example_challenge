@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Infra::Events::Serializers::TransactionCreateSerializer do
+  it { expect(described_class).to be < Infra::Events::Serializer }
+
   describe '#schema_name' do
     it 'return schema name' do
       expect(described_class.new.schema_name).to eq('transaction_create')

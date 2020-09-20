@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Infra::Api::Serializers::AccountSerializer do
+  it { expect(described_class).to be < Infra::Api::Serializers::BaseSerializer }
+
   context 'when transaction' do
     describe '#serialized_json' do
       let(:repository) do
