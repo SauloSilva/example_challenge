@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Application::Transaction::Commands::CreateTransactionCommand do
-  let(:account) { double(availableLimit: 100, activeCard: true, id: 1) }
+  let(:account) { double(available_limit: 100, active_card: true, id: 1) }
   let(:params_without) {{ account: account, account_id: 1, merchant: 'foo', amount: 1, time: '2019-02-13T10:00:00.000Z' }}
   let(:params_with_transformation) {{ account: account, account_id: 1, merchant: 'foo', amount: 1, time: Time.parse('2019-02-13T10:00:00.000Z') }}
 
@@ -12,7 +12,7 @@ RSpec.describe Application::Transaction::Commands::CreateTransactionCommand do
   before do
     allow(Infra::Events::Responders::TransactionCreatorResponder).to receive(:call)
 
-    allow(Infra::Api::Serializers::TransactionSerializer).to receive(:new).and_return(instance_of_serializer)
+    allow(Infra::Api::Serializers::AccountSerializer).to receive(:new).and_return(instance_of_serializer)
     allow(instance_of_serializer).to receive(:serialized_json)
 
     allow(Infra::Repositories::TransactionRepository).to receive(:new).and_return(instance_of_transaction_repository)

@@ -40,12 +40,15 @@
 /core/coverage/*
 /core/.rspec*
 
+/accounts/vendor/gems/*
 /accounts/coverage/*
 /accounts/.rspec*
 
+/transactions/vendor/gems/*
 /transactions/coverage/*
 /transactions/.rspec*
 
+/authorizer/vendor/gems/*
 /authorizer/coverage/*
 /authorizer/.rspec*
 

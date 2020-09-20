@@ -11,11 +11,29 @@ module Infra
         def serialized_json
           {
             account: {
-              availableLimit: repository.available_limit,
-              activeCard: repository.active_card
+              availableLimit: available_limit,
+              activeCard: active_card
             },
             violations: violations
           }
+        end
+
+        private
+
+        def available_limit
+          if repository.methods.include?(:account)
+            repository.account&.available_limit
+          else
+            repository.available_limit
+          end
+        end
+
+        def active_card
+          if repository.methods.include?(:account)
+            repository.account&.active_card
+          else
+            repository.active_card
+          end
         end
       end
     end

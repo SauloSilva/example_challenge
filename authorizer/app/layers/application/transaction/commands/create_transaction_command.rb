@@ -21,7 +21,7 @@ module Application
 
         def response
           valid?
-          Infra::Api::Serializers::TransactionSerializer.new(transaction_repository).serialized_json
+          Infra::Api::Serializers::AccountSerializer.new(transaction_repository).serialized_json
         end
 
         private
