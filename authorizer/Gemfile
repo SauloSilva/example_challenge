@@ -7,7 +7,7 @@ ruby '2.7.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
-gem 'core', path: './vendor/gems/core', require: false
+gem 'core', path: ENV['DOCKER'] ? './vendor/gems/core' : '../core'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

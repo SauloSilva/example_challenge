@@ -9,8 +9,6 @@ x-default: &default
 services:
   accounts:
     <<: *default
-    env_file:
-      - ./accounts/.env
     build:
       context: .
       dockerfile: ./accounts/Dockerfile
@@ -19,8 +17,6 @@ services:
 
   transactions:
     <<: *default
-    env_file:
-      - ./transactions/.env
     build:
       context: .
       dockerfile: ./transactions/Dockerfile
@@ -29,8 +25,6 @@ services:
 
   authorizer:
     working_dir: /app
-    env_file:
-      - ./authorizer/.env
     build:
       context: .
       dockerfile: ./authorizer/Dockerfile

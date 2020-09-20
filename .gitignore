@@ -35,7 +35,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-.env
+/core/.env
+/accounts/.env
+/transactions/.env
+/authorizers/.env
 
 /core/coverage/*
 /core/.rspec*

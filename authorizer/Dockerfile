@@ -4,12 +4,13 @@ LABEL maintainer="saulodasilvasantiago@gmail.com"
 
 ADD authorizer/Gemfile /app/Gemfile
 ADD authorizer/Gemfile.lock /app/Gemfile.lock
+ADD authorizer/.env.production.sample /app/.env
 COPY core /app/vendor/gems/core
 
 WORKDIR /app
 
 RUN gem install bundler:2.1.4
-RUN bundle install
+RUN DOCKER=true bundle install
 
 COPY authorizer /app
 
