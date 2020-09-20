@@ -1,5 +1,5 @@
 PATH
-  remote: ../core
+  remote: vendor/gems/core
   specs:
     core (0.1.0)
       activerecord (= 6.0.3.3)

@@ -1,0 +1,44 @@
+---
+version: '3.8'
+
+x-default: &default
+  working_dir: /app
+  tty: true
+  stdin_open: true
+
+services:
+  accounts:
+    <<: *default
+    env_file:
+      - ./accounts/.env
+    build:
+      context: .
+      dockerfile: ./accounts/Dockerfile
+    volumes:
+      - gems:/usr/local/bundle
+
+  transactions:
+    <<: *default
+    env_file:
+      - ./transactions/.env
+    build:
+      context: .
+      dockerfile: ./transactions/Dockerfile
+    volumes:
+      - gems:/usr/local/bundle
+
+  authorizer:
+    working_dir: /app
+    env_file:
+      - ./authorizer/.env
+    build:
+      context: .
+      dockerfile: ./authorizer/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - gems:/usr/local/bundle
+
+volumes:
+  db_data:
+  gems:
