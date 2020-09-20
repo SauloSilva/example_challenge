@@ -21,5 +21,5 @@ module Core
   end
 end
 
-Dir[File.join(Core.root, 'lib', 'core', '**', '*.rb')].each { |file| p file; require file }
+Dir[File.join(Core.root, 'lib', 'core', '**', '*.rb')].each { |file| require file }
 ActiveRecord::Base.establish_connection(adapter: :nulldb, schema: File.join(Core.root, 'db', 'schema.rb'))
