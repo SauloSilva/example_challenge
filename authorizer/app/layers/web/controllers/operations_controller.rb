@@ -12,7 +12,7 @@ module Web
         else
           render status: :unprocessable_entity, json: operation_application.response
         end
-      rescue => e
+      rescue Application::Operation::Errors::ApplicationNotFound => e
         render status: :unprocessable_entity, json: { message: e.message }
       end
 

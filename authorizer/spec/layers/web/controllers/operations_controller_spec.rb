@@ -1,14 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Web::Controllers::OperationsController, type: :controller do
-  describe 'POST #create' do
+  it { expect(described_class).to be < ActionController::API }
 
-    context 'when operation type is unknown' do
-      let(:params) {{ operation: { whatever: {} }}}
-      before { post :create, params: params }
+  describe 'POST #create' do
+    context 'when raise Application::Operation::Errors::ApplicationNotFound' do
+      let(:params) {{ operation: { account: { availableLimit: 100, activeCard: true } } }}
+      before do
+        allow(Application::Operation::OperationApplication).to receive(:new).and_raise(Application::Operation::Errors::ApplicationNotFound)
+        post :create, params: params
+      end
 
       it 'response status of 422 with message of error' do
-        expect(JSON.parse(response.body).symbolize_keys).to eq({ message: 'param is missing or the value is empty: operation' })
+        expect(JSON.parse(response.body).symbolize_keys).to eq({ message: 'Application not found' })
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

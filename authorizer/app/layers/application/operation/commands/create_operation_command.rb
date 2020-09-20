@@ -10,7 +10,7 @@ module Application
           case
             when account? then Application::Account::AccountApplication.new(attrs[:account])
             when transaction? then Application::Transaction::TransactionApplication.new(attrs[:transaction])
-            else raise 'application not found'
+            else raise Application::Operation::Errors::ApplicationNotFound
           end
         end
 

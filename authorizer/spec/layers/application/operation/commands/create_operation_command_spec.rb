@@ -20,7 +20,7 @@ RSpec.describe Application::Operation::Commands::CreateOperationCommand do
 
     it 'raise error when params contain unknow params' do
       command_instance = described_class.new({ whatever: { ok: :ok }})
-      expect { command_instance.application }.to raise_error('application not found')
+      expect { command_instance.application }.to raise_error(Application::Operation::Errors::ApplicationNotFound)
     end
   end
 end
