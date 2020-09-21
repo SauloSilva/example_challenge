@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "7f46c511-36f6-4dda-942b-10c63a2a3389",
+		"name": "Nubank Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Operations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"account\": { \"activeCard\": true, \"availableLimit\": 100 } }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/operations",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operations"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
