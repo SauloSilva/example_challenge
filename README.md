@@ -1,12 +1,12 @@
-# Nubank Challenge
+# ms-docker
 
 A docker wrapper to run microservices with base infrastructure.
 Services are composed by:
 
-* [authorizer](https://github.com/SauloSilva/nubank_challenge/tree/master/authorizer): micro service resposible to presentation layer and logic layer
-* [core](https://github.com/SauloSilva/nubank_challenge/tree/master/core): library resposible to data layer and data storage layer
-* [accounts](https://github.com/SauloSilva/nubank_challenge/tree/master/accounts): micro service responsible to consumer events of account creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
-* [transactions](https://github.com/SauloSilva/nubank_challenge/tree/master/transactions): micro service responsible to consumer events of transaction creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
+* [/authorizer](/authorizer): micro service resposible to presentation layer and logic layer
+* [/core](/core): library resposible to data layer and data storage layer
+* [/accounts](/accounts): micro service responsible to consumer events of account creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
+* [/transactions](/transactions): micro service responsible to consumer events of transaction creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
 
 *OBSERVATION* Accounts and Transactions APPs these are the extra things I did to add to this challenge.
 
@@ -14,6 +14,7 @@ Services are composed by:
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 orderedList:0 -->
 
+- [Quick start](#quick-start)
 - [Information](#information)
   - [Infrastructure](#infrastructure)
   - [Ruby Applications](#ruby-applications)
@@ -26,6 +27,29 @@ Services are composed by:
 - [Kafka Connectors](#kafka-connectors)
 
 <!-- /TOC -->
+
+## Quick start
+
+To see everything running faster, just perform the following steps:
+
+```
+$ docker-compose -f infra.yml up
+```
+
+Wait for infraestructure to be provisioned
+
+```
+$ docker-compose -f docker-compose.yml up
+```
+
+Wait for all services to be provisioned, and call API
+
+```
+curl --location --request POST 'localhost:3000/operations' \
+  --header ': ' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{ "account": { "activeCard": true, "availableLimit": 100 } }'
+```
 
 ## Information
 
@@ -81,7 +105,7 @@ $ docker-compose run transactions bundle exec rspec
 
 ### Application Architecture Diagram
 
-![img](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Application%20Architecture%20Diagram.png)
+complete here
 
 ### Environment Variables
 
@@ -198,7 +222,7 @@ curl --location --request POST 'localhost:3000/operations' \
   --data-raw '{ "account": { "activeCard": true, "availableLimit": 100 } }'
 ```
 
-See [json collection](https://github.com/SauloSilva/nubank_challenge/blob/master/doc/Nubank%20Challenge.postman_collection.json) of Postman.
+See collection on the Postman.
 
 ## Kafka Connectors
 
