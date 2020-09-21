@@ -9,18 +9,17 @@ RSpec.describe Application::Account::AccountApplication do
     }
   end
 
-  describe '#save(account_command)' do
+  describe '#send_request' do
     it 'calls repository save' do
-      repository_instance = double
-      allow(Domain::Account::Account).to receive(:new).with(params).and_return(repository_instance)
-      allow(repository_instance).to receive(:save)
-
       event_model = Infra::Events::Models::AccountCreate.new(params)
-      account_command = Application::Account::Commands::CreateAccount.new(event_model)
 
-      described_class.new.save(account_command)
+      account_command_instance = double
+      allow(Application::Account::Commands::CreateAccount).to receive(:new).with(event_model).and_return(account_command_instance)
+      allow(account_command_instance).to receive(:request)
 
-      expect(repository_instance).to have_received(:save).once
+      described_class.new(event_model).send_request
+
+      expect(account_command_instance).to have_received(:request).once
     end
   end
 end

@@ -8,6 +8,12 @@ module Application
           @event_model = event_model
         end
 
+        def request
+          RequestBinCaller.new(attrs: params).post
+        end
+
+        private
+
         def params
           {
             active_card: event_model.active_card,

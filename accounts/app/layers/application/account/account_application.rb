@@ -1,14 +1,14 @@
 module Application
   module Account
     class AccountApplication
-      attr_accessor :domain
+      attr_accessor :event_model
 
-      def initialize(repositories = {})
-        @domain = repositories.fetch(:domain) { Domain::Account::Account }
+      def initialize(event_model)
+        @event_model = event_model
       end
 
-      def save(account_command)
-        @domain.new(account_command.params).save
+      def send_request
+        Application::Account::Commands::CreateAccount.new(event_model).request
       end
     end
   end

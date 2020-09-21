@@ -17,13 +17,10 @@ RSpec.describe Infra::Consumers::AccountConsumer, type: :consumer do
 
   it 'calls application account' do
     application_instance = double
-
     event_model = Infra::Events::Models::AccountCreate.new(params)
-    account_command = double
 
-    allow(Application::Account::Commands::CreateAccount).to receive(:new).with(event_model).and_return(account_command)
-    expect(Application::Account::AccountApplication).to receive(:new).and_return(application_instance)
-    expect(application_instance).to receive(:save).with(account_command)
+    expect(Application::Account::AccountApplication).to receive(:new).with(event_model).and_return(application_instance)
+    expect(application_instance).to receive(:send_request)
 
     consumer.consume
   end
