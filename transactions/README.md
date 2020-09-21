@@ -18,10 +18,9 @@ Run infrastructure in root folder with:
 $ docker-compose -f infra.yml up
 ```
 
-
 ### Tests
 
-To run tests in root folder, execute this:
+To run tests, got to root folder, execute this:
 
 ```
 $ docker-compose run transactions bundle exec rspec

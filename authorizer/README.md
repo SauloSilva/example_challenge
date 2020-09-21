@@ -20,7 +20,7 @@ $ docker-compose -f infra.yml up
 
 ### Tests
 
-To run tests in root folder, execute this:
+To run tests, got to root folder, execute this:
 
 ```
 $ docker-compose run authorizer bundle exec rspec
@@ -63,4 +63,4 @@ curl --location --request POST 'localhost:3000/operations' \
   --data-raw '{ "account": { "activeCard": true, "availableLimit": 100 } }'
 ```
 
-See collection on the Postman.
+[See collection of Postman.](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Nubank%20Challenge.postman_collection.json)
