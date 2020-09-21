@@ -8,6 +8,7 @@ Dotenv.load
 require 'karafka'
 require 'dry-struct'
 require 'types'
+require 'request_bin_caller'
 require 'core/version'
 require 'nulldb/rails'
 
