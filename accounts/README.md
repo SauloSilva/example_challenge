@@ -1,24 +1,36 @@
-# README
+# Accounts service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Infrastructure
 
-Things you may want to cover:
+The base infrastructure to run services is composed by the following components:
 
-* Ruby version
+* Kafka: message broker used by microservices
+  * Broker
+  * Zookeeper
+  * Schema registry
+  * Kafka Connector
 
-* System dependencies
+The `infra.yml` it's a docker-compose file that provides all these components and can be used to run micro services with or without docker.
 
-* Configuration
+Run infrastructure in root folder with:
 
-* Database creation
+```
+$ docker-compose -f infra.yml up
+```
 
-* Database initialization
+### Tests
 
-* How to run the test suite
+To run tests in root folder, execute this:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ docker-compose run accounts bundle exec rspec
 
-* Deployment instructions
+```
 
-* ...
+### Running microservices with docker
+
+In root folder, execute:
+
+```
+docker-compose up accounts
+```
