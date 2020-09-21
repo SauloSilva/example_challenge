@@ -26,7 +26,7 @@ module Application
       attr_accessor :params
 
       def transaction_command
-        Application::Transaction::Commands::CreateTransactionCommand.new(params)
+        @transaction_command ||= Application::Transaction::Commands::CreateTransactionCommand.new(params)
       end
     end
   end

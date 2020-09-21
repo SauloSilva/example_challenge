@@ -16,11 +16,10 @@ module Application
         end
 
         def dispatch_event
-          Infra::Events::Responders::TransactionCreatorResponder.call(params)
+          Infra::Events::Responders::TransactionCreatorResponder.call(params_to_responders)
         end
 
         def response
-          valid?
           Infra::Api::Serializers::AccountSerializer.new(transaction_repository).serialized_json
         end
 
@@ -30,6 +29,13 @@ module Application
 
         def transaction_repository
           @transaction_repository ||= Infra::Repositories::TransactionRepository.new.new_record(params)
+        end
+
+        def params_to_responders
+          params.merge(account: {
+            available_limit: account.available_limit,
+            active_card: account.active_card
+          })
         end
 
         def params

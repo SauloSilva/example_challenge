@@ -27,7 +27,7 @@ module Application
       attr_accessor :params
 
       def account_command
-        Application::Account::Commands::CreateAccountCommand.new(params)
+        @account_command ||= Application::Account::Commands::CreateAccountCommand.new(params)
       end
     end
   end
