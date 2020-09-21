@@ -1,12 +1,12 @@
-# ms-docker
+# Nubank challenge
 
 A docker wrapper to run microservices with base infrastructure.
 Services are composed by:
 
-* [/authorizer](/authorizer): micro service resposible to presentation layer and logic layer
-* [/core](/core): library resposible to data layer and data storage layer
-* [/accounts](/accounts): micro service responsible to consumer events of account creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
-* [/transactions](/transactions): micro service responsible to consumer events of transaction creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
+* [authorizer](https://github.com/SauloSilva/nubank_challenge/tree/master/authorizer): micro service resposible to presentation layer and logic layer
+* [core](https://github.com/SauloSilva/nubank_challenge/tree/master/core): library resposible to data layer and data storage layer
+* [accounts](https://github.com/SauloSilva/nubank_challenge/tree/master/accounts): micro service responsible to consumer events of account creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
+* [transactions](https://github.com/SauloSilva/nubank_challenge/tree/master/transactions): micro service responsible to consumer events of transaction creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
 
 *OBSERVATION* Accounts and Transactions APPs these are the extra things I did to add to this challenge.
 
@@ -105,7 +105,7 @@ $ docker-compose run transactions bundle exec rspec
 
 ### Application Architecture Diagram
 
-complete here
+![Application Architecture Diagram](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Application%20Architecture%20Diagram.png)
 
 ### Environment Variables
 
@@ -222,7 +222,7 @@ curl --location --request POST 'localhost:3000/operations' \
   --data-raw '{ "account": { "activeCard": true, "availableLimit": 100 } }'
 ```
 
-See collection on the Postman.
+[See collection of Postman.](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Nubank%20Challenge.postman_collection.json)
 
 ## Kafka Connectors
 
