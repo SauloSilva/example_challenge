@@ -5,8 +5,8 @@ module Web
         operation_application = Application::Operation::OperationApplication.new(operation_param).application
 
         if operation_application.valid?
-          operation_application.dispatch_event
           operation_application.save
+          operation_application.dispatch_event
 
           render status: :created, json: operation_application.response
         else
