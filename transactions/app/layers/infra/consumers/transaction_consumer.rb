@@ -2,8 +2,7 @@ module Infra
   module Consumers
     class TransactionConsumer < Infra::Consumers::ApplicationConsumer
       def consume
-        account_command = Application::Transaction::Commands::CreateTransaction.new(event_model)
-        Application::Transaction::TransactionApplication.new.save(account_command)
+        Application::Transaction::TransactionApplication.new(event_model).send_request
       end
 
       private

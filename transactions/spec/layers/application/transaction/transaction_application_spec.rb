@@ -12,18 +12,17 @@ RSpec.describe Application::Transaction::TransactionApplication do
     }
   end
 
-  describe '#save(transaction_command)' do
-    it 'calls repository save' do
-      repository_instance = double
-      allow(Domain::Transaction::Transaction).to receive(:new).with(params.except(:account)).and_return(repository_instance)
-      allow(repository_instance).to receive(:save)
-
+  describe '#send_request' do
+    it 'calls transaction command' do
       event_model = Infra::Events::Models::TransactionCreate.new(params)
-      transaction_command = Application::Transaction::Commands::CreateTransaction.new(event_model)
 
-      described_class.new.save(transaction_command)
+      account_command_instance = double
+      allow(Application::Transaction::Commands::CreateTransaction).to receive(:new).with(event_model).and_return(account_command_instance)
+      allow(account_command_instance).to receive(:request)
 
-      expect(repository_instance).to have_received(:save).once
+      described_class.new(event_model).send_request
+
+      expect(account_command_instance).to have_received(:request).once
     end
   end
 end

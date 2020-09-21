@@ -1,14 +1,14 @@
 module Application
   module Transaction
     class TransactionApplication
-      attr_accessor :account_responder, :transaction_repository
+      attr_accessor :event_model
 
-      def initialize(repositories = {})
-        @transaction_repository = repositories.fetch(:transaction_repository) { Domain::Transaction::Transaction }
+      def initialize(event_model)
+        @event_model = event_model
       end
 
-      def save(transaction_command)
-        @transaction_repository.new(transaction_command.params).save
+      def send_request
+        Application::Transaction::Commands::CreateTransaction.new(event_model).request
       end
     end
   end

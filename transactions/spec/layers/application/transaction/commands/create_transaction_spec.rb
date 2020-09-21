@@ -11,12 +11,17 @@ RSpec.describe Application::Transaction::Commands::CreateTransaction do
     }
   end
 
-  describe 'params' do
-    it 'returns all params' do
+  describe 'request' do
+    it 'call RequestBinCaller#post' do
       event_model = Infra::Events::Models::TransactionCreate.new(params)
-      account_command = Application::Transaction::Commands::CreateTransaction.new(event_model)
+      account_command = described_class.new(event_model)
+      instance_of_lib = double
 
-      expect(account_command.params).to eq(params.except(:account))
+      allow(RequestBinCaller).to receive(:new).with(attrs: params).and_return(instance_of_lib)
+      allow(instance_of_lib).to receive(:post)
+
+      account_command.request
+      expect(instance_of_lib).to have_received(:post)
     end
   end
 end

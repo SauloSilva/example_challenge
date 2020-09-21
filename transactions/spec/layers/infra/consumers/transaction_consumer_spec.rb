@@ -20,13 +20,10 @@ RSpec.describe Infra::Consumers::TransactionConsumer, type: :consumer do
 
   it 'calls application account' do
     application_instance = double
-
     event_model = Infra::Events::Models::TransactionCreate.new(params)
-    transaction_command = double
 
-    allow(Application::Transaction::Commands::CreateTransaction).to receive(:new).with(event_model).and_return(transaction_command)
-    expect(Application::Transaction::TransactionApplication).to receive(:new).and_return(application_instance)
-    expect(application_instance).to receive(:save).with(transaction_command)
+    expect(Application::Transaction::TransactionApplication).to receive(:new).with(event_model).and_return(application_instance)
+    expect(application_instance).to receive(:send_request)
 
     consumer.consume
   end
