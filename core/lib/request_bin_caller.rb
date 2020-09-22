@@ -5,7 +5,7 @@ class RequestBinCaller
   attr_reader :uri, :req
 
   def initialize(params = {})
-    url = params.fetch(:url) { 'https://eny44nhjua6vj5d.m.pipedream.net' }
+    url = params.fetch(:url) { 'https://4eb16a200c5e4f95ffa4b36d02c58a4b.m.pipedream.net' }
     attrs = params.fetch(:attrs) { {} }
 
     @uri = URI(url)
