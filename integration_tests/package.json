@@ -1,0 +1,24 @@
+{
+  "name": "integration-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run:key": "cypress run --record --key <key>",
+    "cypress:tags": "./node_modules/.bin/cypress-tags run -e TAGS='@ic'",
+    "cypress:run": "cypress run",
+    "feature-express:run": "feature-express ./ pt 4444"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SauloSilva/nubank_challenge.git"
+  },
+  "keywords": [],
+  "author": "Integration tests",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "5.2.0",
+    "cypress-cucumber-preprocessor": "^1.18.0"
+  }
+}
