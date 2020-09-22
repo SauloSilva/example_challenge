@@ -3,8 +3,8 @@ require_relative 'lib/core/version'
 Gem::Specification.new do |spec|
   spec.name          = 'core'
   spec.version       = Core::VERSION
-  spec.authors       = ['BLU']
-  spec.email         = ['ti@useblu.com.br']
+  spec.authors       = ['Saulo Santiago']
+  spec.email         = ['saulodasilvasantiago@gmail.com']
 
   spec.summary       = 'Core configs'
   spec.description   = 'Microservices core funcionalities and patterns'

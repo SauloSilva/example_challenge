@@ -9,6 +9,20 @@ The integration tests are javascript based cypress framework and running with ya
 
 - Install yarn[(more details click here)](https://classic.yarnpkg.com/pt-BR/docs/install#mac-stable)
 
+Before running test, start all micro services:
+
+```
+$ docker-compose -f infra.yml up
+```
+
+Wait for infraestructure to be provisioned
+
+```
+$ docker-compose -f docker-compose.yml up
+```
+
+Wait for all services to be provisioned, go to folder of `intregation_tests`, and instal dependencies:
+
 ```
 $ yarn install
 ```
