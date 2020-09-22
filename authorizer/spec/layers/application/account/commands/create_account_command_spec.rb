@@ -21,6 +21,7 @@ RSpec.describe Application::Account::Commands::CreateAccountCommand do
 
     allow(Infra::Repositories::AccountRepository).to receive(:new).and_return(instance_of_account_repository)
     allow(instance_of_account_repository).to receive(:new_record).with(params_with_transformation).and_return(instance_of_domain)
+    allow(instance_of_account_repository).to receive(:destroy_all)
 
     allow(instance_of_domain).to receive(:save)
     allow(instance_of_domain).to receive(:valid?)
@@ -46,6 +47,13 @@ RSpec.describe Application::Account::Commands::CreateAccountCommand do
       described_class.new(params_without_transformation).valid?
       expect(instance_of_account_repository).to have_received(:new_record).once
       expect(instance_of_domain).to have_received(:valid?).once
+    end
+  end
+
+  describe '#destroy_all' do
+    it 'call method destroy_all of account repository' do
+      described_class.new(params_without_transformation).destroy_all
+      expect(instance_of_account_repository).to have_received(:destroy_all).once
     end
   end
 

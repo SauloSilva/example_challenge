@@ -12,6 +12,7 @@ RSpec.describe Application::Account::AccountApplication do
     allow(instance_of_command).to receive(:valid?)
     allow(instance_of_command).to receive(:save)
     allow(instance_of_command).to receive(:response)
+    allow(instance_of_command).to receive(:destroy_all)
   end
 
   describe '#dispatch_event' do
@@ -32,6 +33,13 @@ RSpec.describe Application::Account::AccountApplication do
     it 'call instance of Application::Account::Commands::CreateAccountCommand#save' do
       account_application.save
       expect(instance_of_command).to have_received(:save)
+    end
+  end
+
+  describe '#destroy_all' do
+    it 'call instance of Application::Account::Commands::CreateAccountCommand#destroy_all' do
+      account_application.destroy_all
+      expect(instance_of_command).to have_received(:destroy_all)
     end
   end
 

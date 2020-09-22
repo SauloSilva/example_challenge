@@ -12,12 +12,20 @@ RSpec.describe Application::Transaction::TransactionApplication do
     allow(instance_of_command).to receive(:valid?)
     allow(instance_of_command).to receive(:save)
     allow(instance_of_command).to receive(:response)
+    allow(instance_of_command).to receive(:destroy_all)
   end
 
   describe '#dispatch_event' do
     it 'call instance of Application::Transaction::Commands::CreateTransactionCommand#dispatch_event' do
       transaction_application.dispatch_event
       expect(instance_of_command).to have_received(:dispatch_event).once
+    end
+  end
+
+  describe '#destroy_all' do
+    it 'call instance of Application::Transaction::Commands::CreateTransactionCommand#destroy_all' do
+      transaction_application.destroy_all
+      expect(instance_of_command).to have_received(:destroy_all)
     end
   end
 

@@ -17,6 +17,7 @@ RSpec.describe Application::Transaction::Commands::CreateTransactionCommand do
 
     allow(Infra::Repositories::TransactionRepository).to receive(:new).and_return(instance_of_transaction_repository)
     allow(instance_of_transaction_repository).to receive(:new_record).with(params_with_transformation).and_return(instance_of_domain)
+    allow(instance_of_transaction_repository).to receive(:destroy_all)
 
     allow(Infra::Repositories::AccountRepository).to receive(:new).and_return(double(find_last: account))
 
@@ -29,6 +30,13 @@ RSpec.describe Application::Transaction::Commands::CreateTransactionCommand do
       described_class.new(params_without).save
       expect(instance_of_transaction_repository).to have_received(:new_record).once
       expect(instance_of_domain).to have_received(:save).once
+    end
+  end
+
+  describe '#destroy_all' do
+    it 'call method destroy_all of transaction repository' do
+      described_class.new(params_without).destroy_all
+      expect(instance_of_transaction_repository).to have_received(:destroy_all).once
     end
   end
 

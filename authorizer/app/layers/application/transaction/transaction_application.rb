@@ -21,6 +21,10 @@ module Application
         transaction_command.valid?
       end
 
+      def destroy_all
+        transaction_command.destroy_all
+      end
+
       private
 
       attr_accessor :params

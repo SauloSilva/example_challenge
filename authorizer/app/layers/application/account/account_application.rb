@@ -18,6 +18,10 @@ module Application
         account_command.save
       end
 
+      def destroy_all
+        account_command.destroy_all
+      end
+
       def valid?
         account_command.valid?
       end

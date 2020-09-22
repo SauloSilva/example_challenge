@@ -8,6 +8,10 @@ module Infra
       def find_last
         Domain::Account::Account.records&.last
       end
+
+      def destroy_all
+        Domain::Account::Account.records = []
+      end
     end
   end
 end

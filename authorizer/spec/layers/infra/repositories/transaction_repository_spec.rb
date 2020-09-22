@@ -11,4 +11,15 @@ RSpec.describe Infra::Repositories::TransactionRepository do
       expect(Domain::Transaction::Transaction).to have_received(:new)
     end
   end
+
+  describe '#destroy_all' do
+    it 'array empty assing of Domain::Transaction::Transaction#records' do
+      Domain::Transaction::Transaction.records = ['1']
+      expect(Domain::Transaction::Transaction.records).to be_present
+
+      described_class.new.destroy_all
+
+      expect(Domain::Transaction::Transaction.records).to be_blank
+    end
+  end
 end

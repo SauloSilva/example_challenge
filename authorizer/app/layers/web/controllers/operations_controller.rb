@@ -16,6 +16,15 @@ module Web
         render status: :unprocessable_entity, json: { message: e.message }
       end
 
+      def destroy
+        account_application = Application::Account::AccountApplication.new
+        transaction_application = Application::Transaction::TransactionApplication.new
+
+        account_application.destroy_all
+        transaction_application.destroy_all
+        render status: :ok, json: { message: 'ok' }
+      end
+
       private
 
       def operation_param

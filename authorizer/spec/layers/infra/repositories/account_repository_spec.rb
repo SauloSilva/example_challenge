@@ -22,4 +22,15 @@ RSpec.describe Infra::Repositories::AccountRepository do
       expect(Domain::Account::Account).to have_received(:records)
     end
   end
+
+  describe '#destroy_all' do
+    it 'array empty assing of Domain::Account::Account#records' do
+      Domain::Account::Account.records = ['1']
+      expect(Domain::Account::Account.records).to be_present
+
+      described_class.new.destroy_all
+
+      expect(Domain::Account::Account.records).to be_blank
+    end
+  end
 end

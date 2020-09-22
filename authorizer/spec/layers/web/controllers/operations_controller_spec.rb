@@ -4,6 +4,29 @@ RSpec.describe Web::Controllers::OperationsController, type: :controller do
   it { expect(described_class).to be < ActionController::API }
 
   describe 'POST #create' do
+    let(:instance_of_account_application) { double }
+    let(:instance_of_transaction_application) { double }
+
+    before do
+      allow(Application::Account::AccountApplication).to receive(:new).and_return(instance_of_account_application)
+      allow(Application::Transaction::TransactionApplication).to receive(:new).and_return(instance_of_transaction_application)
+
+      allow(instance_of_account_application).to receive(:destroy_all)
+      allow(instance_of_transaction_application).to receive(:destroy_all)
+
+      delete :destroy
+    end
+
+    it 'response status of 200 with message ok and call destroy all for transaction and operation application' do
+      expect(JSON.parse(response.body).symbolize_keys).to eq({ message: 'ok' })
+      expect(response).to have_http_status(:success)
+
+      expect(instance_of_account_application).to have_received(:destroy_all)
+      expect(instance_of_transaction_application).to have_received(:destroy_all)
+    end
+  end
+
+  describe 'POST #create' do
     context 'when raise Application::Operation::Errors::ApplicationNotFound' do
       let(:params) {{ operation: { account: { availableLimit: 100, activeCard: true } } }}
       before do

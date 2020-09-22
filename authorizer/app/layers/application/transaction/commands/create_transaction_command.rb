@@ -8,11 +8,11 @@ module Application
         end
 
         def save
-          transaction_repository.save
+          new_transaction_repository.save
         end
 
         def valid?
-          transaction_repository.valid?
+          new_transaction_repository.valid?
         end
 
         def dispatch_event
@@ -20,7 +20,11 @@ module Application
         end
 
         def response
-          Infra::Api::Serializers::AccountSerializer.new(transaction_repository).serialized_json
+          Infra::Api::Serializers::AccountSerializer.new(new_transaction_repository).serialized_json
+        end
+
+        def destroy_all
+          transaction_repository.destroy_all
         end
 
         private
@@ -28,7 +32,11 @@ module Application
         attr_accessor :attrs
 
         def transaction_repository
-          @transaction_repository ||= Infra::Repositories::TransactionRepository.new.new_record(params)
+          Infra::Repositories::TransactionRepository.new
+        end
+
+        def new_transaction_repository
+          @new_transaction_repository ||= transaction_repository.new_record(params)
         end
 
         def params_to_responders

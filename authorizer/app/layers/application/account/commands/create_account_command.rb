@@ -7,11 +7,11 @@ module Application
         end
 
         def save
-          account_repository.save
+          new_account_repository.save
         end
 
         def valid?
-          account_repository.valid?
+          new_account_repository.valid?
         end
 
         def dispatch_event
@@ -19,7 +19,11 @@ module Application
         end
 
         def response
-          Infra::Api::Serializers::AccountSerializer.new(account_repository).serialized_json
+          Infra::Api::Serializers::AccountSerializer.new(new_account_repository).serialized_json
+        end
+
+        def destroy_all
+          account_repository.destroy_all
         end
 
         private
@@ -27,7 +31,11 @@ module Application
         attr_accessor :attrs
 
         def account_repository
-          @account_repository ||= Infra::Repositories::AccountRepository.new.new_record(params)
+          Infra::Repositories::AccountRepository.new
+        end
+
+        def new_account_repository
+          @new_account_repository ||= account_repository.new_record(params)
         end
 
         def params
