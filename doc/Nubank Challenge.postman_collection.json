@@ -18,7 +18,34 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"account\": { \"activeCard\": true, \"availableLimit\": 100 } }",
+					"raw": "{ \"account\": { \"activeCard\": true, \"availableLimit\": 100 }}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/operations",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"operations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operations",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
