@@ -106,6 +106,7 @@ $ docker-compose run transactions bundle exec rspec
 ### Application Architecture Diagram
 
 ![Application Architecture Diagram](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Application%20Architecture%20Diagram.png)
+![Integration Architecture Diagram](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Integration%20Architecture%20Diagram.png)
 
 ### Environment Variables
 
