@@ -1,0 +1,17 @@
+{
+  "projectId": "24o64x",
+  "baseUrl": "http://localhost:3000",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
+  "chromeWebSecurity": false,
+  "viewportWidth": 1400,
+  "viewportHeight": 800,
+  "ignoreTestFiles": "*.js",
+  "responseTimeout": 5000,
+  "requestTimeout": 7000,
+  "defaultCommandTimeout": 5000,
+
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/support/step_definitions/"
+  }
+}
