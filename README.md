@@ -1,12 +1,12 @@
-# Nubank challenge
+# Example challenge
 
 A docker wrapper to run microservices with base infrastructure.
 Services are composed by:
 
-* [authorizer](https://github.com/SauloSilva/nubank_challenge/tree/master/authorizer): micro service resposible to presentation layer and logic layer
-* [core](https://github.com/SauloSilva/nubank_challenge/tree/master/core): library resposible to data layer and data storage layer
-* [accounts](https://github.com/SauloSilva/nubank_challenge/tree/master/accounts): micro service responsible to consumer events of account creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
-* [transactions](https://github.com/SauloSilva/nubank_challenge/tree/master/transactions): micro service responsible to consumer events of transaction creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
+* [authorizer](https://github.com/SauloSilva/example_challenge/tree/master/authorizer): micro service resposible to presentation layer and logic layer
+* [core](https://github.com/SauloSilva/example_challenge/tree/master/core): library resposible to data layer and data storage layer
+* [accounts](https://github.com/SauloSilva/example_challenge/tree/master/accounts): micro service responsible to consumer events of account creation and send to https://pipedream.com/@SauloSilva/nubank-challenge-p_JZC9j6
+* [transactions](https://github.com/SauloSilva/example_challenge/tree/master/transactions): micro service responsible to consumer events of transaction creation and send to https://pipedream.com/@SauloSilva/example-challenge-p_JZC9j6
 
 *OBSERVATION* Accounts and Transactions APPs these are the extra things I did to add to this challenge.
 
@@ -105,8 +105,8 @@ $ docker-compose run transactions bundle exec rspec
 
 ### Application Architecture Diagram
 
-![Application Architecture Diagram](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Application%20Architecture%20Diagram.png)
-![Integration Architecture Diagram](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Integration%20Architecture%20Diagram.png)
+![Application Architecture Diagram](https://github.com/SauloSilva/example_challenge/raw/master/doc/Application%20Architecture%20Diagram.png)
+![Integration Architecture Diagram](https://github.com/SauloSilva/example_challenge/raw/master/doc/Integration%20Architecture%20Diagram.png)
 
 ### Environment Variables
 
@@ -223,7 +223,7 @@ curl --location --request POST 'localhost:3000/operations' \
   --data-raw '{ "account": { "activeCard": true, "availableLimit": 100 } }'
 ```
 
-[See collection of Postman.](https://github.com/SauloSilva/nubank_challenge/raw/master/doc/Nubank%20Challenge.postman_collection.json)
+[See collection of Postman.](https://github.com/SauloSilva/example_challenge/raw/master/doc/Example%20Challenge.postman_collection.json)
 
 ## Kafka Connectors
 
